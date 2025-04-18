@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const VERIFY_TOKEN = "academiaIA123";
-const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/yaq8g9nf2h2xsytqfz21vesrd0wk7kv4";
+const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/lgr7l3y8p51jof5l3el5yw5ehlyxaq8q";
 
 app.use(express.json());
 
