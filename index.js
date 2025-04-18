@@ -41,7 +41,7 @@ app.post("/webhook", async (req, res) => {
         const text = message.text?.body || "";
 
         // Envia para o Make
-        await axios.post("https://hook.us1.make.com/SEU_ID_DO_MAKE", {
+        await axios.post("https://hook.us2.make.com/yaq8g9nf2h2xsytqfz21vesrd0wk7kv4", {
           from: phone_number,
           text: text
         });
