@@ -4,11 +4,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const VERIFY_TOKEN = "academiaIA123";
+const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/yaq8g9nf2h2xsytqfz21vesrd0wk7kv4";
 
-// Para ler JSON
 app.use(express.json());
 
-// GET – Verificação do Webhook
+// Verificação do Webhook - GET
 app.get("/webhook", (req, res) => {
   const mode = req.query["hub.mode"];
   const token = req.query["hub.verify_token"];
@@ -26,7 +26,7 @@ app.get("/webhook", (req, res) => {
   }
 });
 
-// POST – Receber mensagens do WhatsApp
+// Recebendo mensagens do WhatsApp - POST
 app.post("/webhook", async (req, res) => {
   const body = req.body;
 
@@ -40,8 +40,8 @@ app.post("/webhook", async (req, res) => {
         const phone_number = message.from;
         const text = message.text?.body || "";
 
-        // Envia para o Make
-        await axios.post("https://hook.us2.make.com/yaq8g9nf2h2xsytqfz21vesrd0wk7kv4", {
+        // Envia para o Make.com
+        await axios.post(MAKE_WEBHOOK_URL, {
           from: phone_number,
           text: text
         });
@@ -58,9 +58,9 @@ app.post("/webhook", async (req, res) => {
 
 // Teste rápido
 app.get("/", (req, res) => {
-  res.send("Servidor da Academia IA está no ar 🚀");
+  res.send("🚀 Servidor da Academia IA está no ar!");
 });
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
